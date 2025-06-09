@@ -285,8 +285,16 @@ class PickPlace(SingleArmEnv):
             float: reward value
         """
         # compute sparse rewards
-        self._check_success()
-        reward = np.sum(self.objects_in_bins)
+        # self._check_success()
+        # reward = np.sum(self.objects_in_bins)
+        staged_rewards = self.staged_rewards()
+        sparse_reward = [
+            np.float32(staged_rewards[0] > 0.0),
+            np.float32(staged_rewards[1] > 0.0),
+            np.float32(staged_rewards[2] > 0.0),
+            np.float32(staged_rewards[3] > 0.0),
+        ]
+        reward = sum(sparse_reward)
 
         # add in shaped rewards
         if self.reward_shaping:
