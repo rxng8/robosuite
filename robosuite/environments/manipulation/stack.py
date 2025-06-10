@@ -246,7 +246,6 @@ class Stack(SingleArmEnv):
         else:
             reward = 2.0 if r_stack > 0 else 0.0
             reward += (1.0 if r_lift > 0.0 else 0.0)
-            reward += (1.0 if r_reach > 0.0 else 0.0)
 
         if self.reward_scale is not None:
             reward *= self.reward_scale / 2.0
