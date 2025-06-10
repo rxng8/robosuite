@@ -269,7 +269,7 @@ class NutAssembly(SingleArmEnv):
         # reward = np.sum(self.objects_on_pegs)
         staged_rewards = self.staged_rewards()
         sparse_reward = [
-            np.float32(staged_rewards[0] > 0.0),
+            # np.float32(staged_rewards[0] > 0.0),
             np.float32(staged_rewards[1] > 0.0),
             np.float32(staged_rewards[2] > 0.0),
             np.float32(staged_rewards[3] > 0.0),
